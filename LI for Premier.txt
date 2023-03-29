@@ -1,0 +1,40 @@
+struct node{
+int val;
+node*next;
+node*head = NULL;
+};
+bool tst(int n){
+for(int i =2;i<n/2;i++){
+    if(n%i == 0){
+        return false;
+    }
+}
+return true;
+}
+void add(struct node l,int mx ){
+node*firstnode = new node;
+l.head = firstnode;
+firstnode->val = 2;
+firstnode->next=NULL;
+node*p;
+for (int i = 3;i<=mx;i=i+2){
+    if (tst(i)){
+        node*sol = new node;
+        sol->val = i;
+        sol->next = NULL;
+        if (i==3){
+            firstnode->next = sol;
+            p = sol;
+        }
+        else{
+            p->next = sol;
+            p=sol;
+            }
+    }
+}
+node*tmp = firstnode;
+while(tmp!=NULL){
+    cout <<"the number  "<<tmp->val<<endl;
+    tmp = tmp->next;
+}
+}
